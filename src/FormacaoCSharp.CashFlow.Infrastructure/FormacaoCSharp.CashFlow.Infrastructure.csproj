@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FormacaoCSharp.CashFlow.Domain\FormacaoCSharp.CashFlow.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

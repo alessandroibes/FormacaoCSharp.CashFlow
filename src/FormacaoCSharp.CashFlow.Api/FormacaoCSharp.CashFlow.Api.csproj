@@ -10,4 +10,11 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FormacaoCSharp.CashFlow.Application\FormacaoCSharp.CashFlow.Application.csproj" />
+    <ProjectReference Include="..\FormacaoCSharp.CashFlow.Communication\FormacaoCSharp.CashFlow.Communication.csproj" />
+    <ProjectReference Include="..\FormacaoCSharp.CashFlow.Exception\FormacaoCSharp.CashFlow.Exception.csproj" />
+    <ProjectReference Include="..\FormacaoCSharp.CashFlow.Infrastructure\FormacaoCSharp.CashFlow.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

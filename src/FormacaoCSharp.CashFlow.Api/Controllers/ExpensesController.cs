@@ -1,5 +1,6 @@
 ﻿using FormacaoCSharp.CashFlow.Application.UseCases.Expenses.Register;
 using FormacaoCSharp.CashFlow.Communication.Requests;
+using FormacaoCSharp.CashFlow.Communication.Responses;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FormacaoCSharp.CashFlow.Api.Controllers;
@@ -21,11 +22,15 @@ public class ExpensesController : ControllerBase
         }
         catch (ArgumentException ex)
         {
-            return BadRequest(ex.Message);
+            var errorResponse = new ResponseErrorJson(ex.Message);
+
+            return BadRequest(errorResponse);
         }
         catch
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "unknown error");
+            var errorResponse = new ResponseErrorJson("unknown error");
+
+            return StatusCode(StatusCodes.Status500InternalServerError, errorResponse);
         }
     }
 }

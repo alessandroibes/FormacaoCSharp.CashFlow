@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="12.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FormacaoCSharp.CashFlow.Communication\FormacaoCSharp.CashFlow.Communication.csproj" />
     <ProjectReference Include="..\FormacaoCSharp.CashFlow.Domain\FormacaoCSharp.CashFlow.Domain.csproj" />
     <ProjectReference Include="..\FormacaoCSharp.CashFlow.Exception\FormacaoCSharp.CashFlow.Exception.csproj" />

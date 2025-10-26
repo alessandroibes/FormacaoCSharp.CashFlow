@@ -17,4 +17,8 @@
     <ProjectReference Include="..\FormacaoCSharp.CashFlow.Infrastructure\FormacaoCSharp.CashFlow.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Filters\" />
+  </ItemGroup>
+
 </Project>

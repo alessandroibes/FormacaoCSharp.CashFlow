@@ -1,5 +1,6 @@
 ﻿using FormacaoCSharp.CashFlow.Communication.Requests;
 using FormacaoCSharp.CashFlow.Communication.Responses;
+using FormacaoCSharp.CashFlow.Exception.ExceptionsBase;
 
 namespace FormacaoCSharp.CashFlow.Application.UseCases.Expenses.Register;
 
@@ -22,7 +23,7 @@ public class RegisterExpenseUseCase
         {
             var errorMessages = result.Errors.Select(f => f.ErrorMessage).ToList();
 
-            throw new ArgumentException();
+            throw new ErrorOnValidationException(errorMessages);
         }
     }
 }

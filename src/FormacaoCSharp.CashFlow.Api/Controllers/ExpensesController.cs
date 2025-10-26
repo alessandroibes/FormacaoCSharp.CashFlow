@@ -1,6 +1,7 @@
 ﻿using FormacaoCSharp.CashFlow.Application.UseCases.Expenses.Register;
 using FormacaoCSharp.CashFlow.Communication.Requests;
 using FormacaoCSharp.CashFlow.Communication.Responses;
+using FormacaoCSharp.CashFlow.Exception.ExceptionsBase;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FormacaoCSharp.CashFlow.Api.Controllers;
@@ -20,9 +21,9 @@ public class ExpensesController : ControllerBase
 
             return Created(string.Empty, response);
         }
-        catch (ArgumentException ex)
+        catch (ErrorOnValidationException ex)
         {
-            var errorResponse = new ResponseErrorJson(ex.Message);
+            var errorResponse = new ResponseErrorJson(ex.Errors);
 
             return BadRequest(errorResponse);
         }

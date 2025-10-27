@@ -1,8 +1,8 @@
 ﻿using FormacaoCSharp.CashFlow.Communication.Responses;
+using FormacaoCSharp.CashFlow.Exception;
 using FormacaoCSharp.CashFlow.Exception.ExceptionsBase;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using System.Security.Cryptography.X509Certificates;
 
 namespace FormacaoCSharp.CashFlow.Api.Filters;
 
@@ -42,7 +42,7 @@ public class ExceptionFilter : IExceptionFilter
 
     private void ThrowUnknownError(ExceptionContext context)
     {
-        var errorResponse = new ResponseErrorJson("unknown error");
+        var errorResponse = new ResponseErrorJson(ResourceErrorMessages.UNKNOWN_ERROR);
 
         context.HttpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
         context.Result = new ObjectResult(errorResponse);

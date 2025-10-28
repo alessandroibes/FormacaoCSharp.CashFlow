@@ -1,5 +1,5 @@
-﻿using FormacaoCSharp.CashFlow.Application.UseCases.Expenses.Register;
-using FormacaoCSharp.CashFlow.Communication.Requests;
+﻿using CommonTestUtilities.Requests;
+using FormacaoCSharp.CashFlow.Application.UseCases.Expenses.Register;
 
 namespace Validators.Test.Expenses.Register;
 
@@ -10,14 +10,7 @@ public class RegisterExpenseValidatorTests
     {
         // Arrange
         var validator = new RegisterExpenseValidator();
-        var request = new RequestRegisterExpenseJson
-        {
-            Amount = 100,
-            Date = DateTime.Now.AddDays(-1),
-            Description = "Description",
-            Title = "Apple",
-            PaymentType = FormacaoCSharp.CashFlow.Communication.Enums.PaymentType.CreditCard
-        };
+        var request = RequestRegisterExpenseJsonBuilder.Build();
 
         // Act
         var result = validator.Validate(request);

@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\FormacaoCSharp.CashFlow.Application\FormacaoCSharp.CashFlow.Application.csproj" />
     <ProjectReference Include="..\..\src\FormacaoCSharp.CashFlow.Communication\FormacaoCSharp.CashFlow.Communication.csproj" />
+    <ProjectReference Include="..\CommonTestUtilities\CommonTestUtilities.csproj" />
   </ItemGroup>
 
   <ItemGroup>

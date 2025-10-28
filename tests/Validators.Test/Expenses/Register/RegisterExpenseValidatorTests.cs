@@ -1,4 +1,5 @@
 ﻿using CommonTestUtilities.Requests;
+using FluentAssertions;
 using FormacaoCSharp.CashFlow.Application.UseCases.Expenses.Register;
 
 namespace Validators.Test.Expenses.Register;
@@ -16,6 +17,6 @@ public class RegisterExpenseValidatorTests
         var result = validator.Validate(request);
 
         // Assert
-        Assert.True(result.IsValid);
+        result.IsValid.Should().BeTrue();
     }
 }

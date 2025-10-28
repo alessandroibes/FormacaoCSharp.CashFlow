@@ -1,4 +1,5 @@
 using FormacaoCSharp.CashFlow.Api.Filters;
+using FormacaoCSharp.CashFlow.Api.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,8 @@ if (app.Environment.IsDevelopment())
         options => options.OpenApiVersion = Microsoft.OpenApi.OpenApiSpecVersion.OpenApi2_0);
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<CultureMiddleware>();
 
 app.UseHttpsRedirection();
 

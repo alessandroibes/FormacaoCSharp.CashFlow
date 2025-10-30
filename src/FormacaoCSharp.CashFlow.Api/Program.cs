@@ -1,5 +1,7 @@
 using FormacaoCSharp.CashFlow.Api.Filters;
 using FormacaoCSharp.CashFlow.Api.Middlewares;
+using FormacaoCSharp.CashFlow.Infrastructure;
+using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,12 +11,13 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
 
+builder.Services.AddInfrastructure();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger(
-        options => options.OpenApiVersion = Microsoft.OpenApi.OpenApiSpecVersion.OpenApi2_0);
+    app.UseSwagger(options => options.OpenApiVersion = OpenApiSpecVersion.OpenApi2_0);
     app.UseSwaggerUI();
 }
 

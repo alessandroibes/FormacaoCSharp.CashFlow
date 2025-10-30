@@ -1,4 +1,5 @@
-﻿using FormacaoCSharp.CashFlow.Domain.Repositories.Expenses;
+﻿using FormacaoCSharp.CashFlow.Domain.Repositories;
+using FormacaoCSharp.CashFlow.Domain.Repositories.Expenses;
 using FormacaoCSharp.CashFlow.Infrastructure.DataAccess;
 using FormacaoCSharp.CashFlow.Infrastructure.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,7 @@ public static class DependencyInjecyionExtension
 
     private static void AddRepositories(IServiceCollection services)
     {
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IExpensesRepository, ExpensesRepository>();
     }
 

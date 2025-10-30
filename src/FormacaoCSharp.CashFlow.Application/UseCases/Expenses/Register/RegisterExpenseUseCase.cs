@@ -1,6 +1,7 @@
 ﻿using FormacaoCSharp.CashFlow.Communication.Requests;
 using FormacaoCSharp.CashFlow.Communication.Responses;
 using FormacaoCSharp.CashFlow.Domain.Entities;
+using FormacaoCSharp.CashFlow.Domain.Repositories;
 using FormacaoCSharp.CashFlow.Domain.Repositories.Expenses;
 using FormacaoCSharp.CashFlow.Exception.ExceptionsBase;
 
@@ -9,10 +10,12 @@ namespace FormacaoCSharp.CashFlow.Application.UseCases.Expenses.Register;
 public class RegisterExpenseUseCase : IRegisterExpenseUseCase
 {
     private readonly IExpensesRepository _repository;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public RegisterExpenseUseCase(IExpensesRepository repository)
+    public RegisterExpenseUseCase(IExpensesRepository repository, IUnitOfWork unitOfWork)
     {
         _repository = repository;
+        _unitOfWork = unitOfWork;
     }
 
     public ResponseRegisteredExpenseJson Execute(RequestRegisterExpenseJson request)
@@ -29,6 +32,8 @@ public class RegisterExpenseUseCase : IRegisterExpenseUseCase
         };
 
         _repository.Add(entity);
+
+        _unitOfWork.Commit();
 
         return new ResponseRegisteredExpenseJson();
     }

@@ -1,4 +1,5 @@
 ﻿using FormacaoCSharp.CashFlow.Application.AutoMapper;
+using FormacaoCSharp.CashFlow.Application.UseCases.Expenses.GetAll;
 using FormacaoCSharp.CashFlow.Application.UseCases.Expenses.Register;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -20,5 +21,6 @@ public static class DependencyInjecyionExtension
     private static void AddUseCases(IServiceCollection services)
     {
         services.AddScoped<IRegisterExpenseUseCase, RegisterExpenseUseCase>();
+        services.AddScoped<IGetAllExpenseUseCase, GetAllExpenseUseCase>();
     }
 }

@@ -2,11 +2,11 @@
 using FormacaoCSharp.CashFlow.Communication.Requests;
 using FormacaoCSharp.CashFlow.Exception;
 
-namespace FormacaoCSharp.CashFlow.Application.UseCases.Expenses.Register;
+namespace FormacaoCSharp.CashFlow.Application.UseCases.Expenses;
 
-public class RegisterExpenseValidator : AbstractValidator<RequestRegisterExpenseJson>
+public class ExpenseValidator : AbstractValidator<RequestExpenseJson>
 {
-    public RegisterExpenseValidator()
+    public ExpenseValidator()
     {
         RuleFor(expense => expense.Title).NotEmpty().WithMessage(ResourceErrorMessages.TITLE_REQUEIRED);
         RuleFor(expense => expense.Amount).GreaterThan(0).WithMessage(ResourceErrorMessages.AMOUNT_MUST_BE_GREATER_THAN_ZERO);

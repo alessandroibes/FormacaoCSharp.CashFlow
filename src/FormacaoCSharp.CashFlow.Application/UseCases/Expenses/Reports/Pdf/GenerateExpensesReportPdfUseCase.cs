@@ -1,5 +1,7 @@
 ﻿using FormacaoCSharp.CashFlow.Application.UseCases.Expenses.Reports.Pdf.Fonts;
+using FormacaoCSharp.CashFlow.Domain.Reports;
 using FormacaoCSharp.CashFlow.Domain.Repositories.Expenses;
+using MigraDoc.DocumentObjectModel;
 using PdfSharp.Fonts;
 
 namespace FormacaoCSharp.CashFlow.Application.UseCases.Expenses.Reports.Pdf;
@@ -24,6 +26,21 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
             return [];
         }
 
+        var document = CreateDocument(month);
+
         return [];
+    }
+
+    private Document CreateDocument(DateOnly month)
+    {
+        var document = new Document();
+
+        document.Info.Title = $"{ResourceReportGenerationMessages.EXPENSES_FOR} {month:Y}";
+        document.Info.Author = "Alessandro Oliveira";
+
+        var style = document.Styles["Normal"];
+        style!.Font.Name = FontHelper.RALEWAY_REGULAR;
+
+        return document;
     }
 }

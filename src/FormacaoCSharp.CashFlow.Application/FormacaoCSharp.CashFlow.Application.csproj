@@ -34,4 +34,14 @@
     <ProjectReference Include="..\FormacaoCSharp.CashFlow.Exception\FormacaoCSharp.CashFlow.Exception.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Logo\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Logo\ProfilePhoto.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

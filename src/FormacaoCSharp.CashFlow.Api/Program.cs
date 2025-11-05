@@ -2,6 +2,7 @@ using FormacaoCSharp.CashFlow.Api.Filters;
 using FormacaoCSharp.CashFlow.Api.Middlewares;
 using FormacaoCSharp.CashFlow.Application;
 using FormacaoCSharp.CashFlow.Infrastructure;
+using FormacaoCSharp.CashFlow.Infrastructure.Migrations;
 using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,4 +32,13 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+await MigrateDatabase();
+
 app.Run();
+
+async Task MigrateDatabase()
+{
+    await using var scope = app.Services.CreateAsyncScope();
+
+    await DataBaseMigration.MigrateDatabase(scope.ServiceProvider);
+}

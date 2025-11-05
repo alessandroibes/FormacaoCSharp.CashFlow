@@ -1,5 +1,6 @@
 ﻿using FormacaoCSharp.CashFlow.Domain.Repositories;
 using FormacaoCSharp.CashFlow.Domain.Repositories.Expenses;
+using FormacaoCSharp.CashFlow.Domain.Repositories.User;
 using FormacaoCSharp.CashFlow.Domain.Security.Cryptography;
 using FormacaoCSharp.CashFlow.Infrastructure.DataAccess;
 using FormacaoCSharp.CashFlow.Infrastructure.DataAccess.Repositories;
@@ -25,6 +26,7 @@ public static class DependencyInjecyionExtension
         services.AddScoped<IExpensesReadOnlyRepository, ExpensesRepository>();
         services.AddScoped<IExpensesWriteOnlyRepository, ExpensesRepository>();
         services.AddScoped<IExpensesUpdateOnlyRepository, ExpensesRepository>();
+        services.AddScoped<IUserReadOnlyRepository, UserRepository>();
     }
 
     private static void AddDbContext(IServiceCollection services, IConfiguration configuration)

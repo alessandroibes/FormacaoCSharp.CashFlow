@@ -6,6 +6,7 @@ using FormacaoCSharp.CashFlow.Application.UseCases.Expenses.Register;
 using FormacaoCSharp.CashFlow.Application.UseCases.Expenses.Reports.Excel;
 using FormacaoCSharp.CashFlow.Application.UseCases.Expenses.Reports.Pdf;
 using FormacaoCSharp.CashFlow.Application.UseCases.Expenses.Update;
+using FormacaoCSharp.CashFlow.Application.UseCases.Login.DoLogin;
 using FormacaoCSharp.CashFlow.Application.UseCases.Users.Register;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -34,5 +35,6 @@ public static class DependencyInjectionExtension
         services.AddScoped<IGenerateExpensesReportExcelUseCase, GenerateExpensesReportExcelUseCase>();
         services.AddScoped<IGenerateExpensesReportPdfUseCase, GenerateExpensesReportPdfUseCase>();
         services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
+        services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
     }
 }

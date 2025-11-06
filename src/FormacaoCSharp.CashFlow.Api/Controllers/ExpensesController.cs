@@ -5,12 +5,14 @@ using FormacaoCSharp.CashFlow.Application.UseCases.Expenses.Register;
 using FormacaoCSharp.CashFlow.Application.UseCases.Expenses.Update;
 using FormacaoCSharp.CashFlow.Communication.Requests;
 using FormacaoCSharp.CashFlow.Communication.Responses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FormacaoCSharp.CashFlow.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class ExpensesController : ControllerBase
 {
     [HttpPost]

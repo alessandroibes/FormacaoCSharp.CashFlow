@@ -5,6 +5,7 @@ using FormacaoCSharp.CashFlow.Communication.Responses;
 using FormacaoCSharp.CashFlow.Domain.Repositories;
 using FormacaoCSharp.CashFlow.Domain.Repositories.User;
 using FormacaoCSharp.CashFlow.Domain.Security.Cryptography;
+using FormacaoCSharp.CashFlow.Domain.Security.Tokens;
 using FormacaoCSharp.CashFlow.Exception;
 using FormacaoCSharp.CashFlow.Exception.ExceptionsBase;
 
@@ -17,12 +18,14 @@ public class RegisterUserUseCase : IRegisterUserUseCase
     private readonly IUserReadOnlyRepository _userReadOnlyRepository;
     private readonly IUserWriteOnlyRepository _userWriteOnlyRepository;
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IAccessTokenGenerator _tokenGenerator;
 
     public RegisterUserUseCase(
         IMapper mapper,
         IPasswordEncripter passwordEncripter,
         IUserReadOnlyRepository userReadOnlyRepository,
         IUserWriteOnlyRepository userWriteOnlyRepository,
+        IAccessTokenGenerator tokenGenerator,
         IUnitOfWork unitOfWork)
     {
         _mapper = mapper;
@@ -30,6 +33,7 @@ public class RegisterUserUseCase : IRegisterUserUseCase
         _userReadOnlyRepository = userReadOnlyRepository;
         _userWriteOnlyRepository = userWriteOnlyRepository;
         _unitOfWork = unitOfWork;
+        _tokenGenerator = tokenGenerator;
     }
 
     public async Task<ResponseRegisteredUserJson> Execute(RequestRegisterUserJson request)
@@ -47,6 +51,7 @@ public class RegisterUserUseCase : IRegisterUserUseCase
         return new ResponseRegisteredUserJson
         {
             Name = user.Name,
+            Token = _tokenGenerator.Generate(user)
         };
     }
 
